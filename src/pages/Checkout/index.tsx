@@ -454,14 +454,15 @@ const Checkout = () => {
               </div>
             </>
           </Card>
-          <Button
-            type="submit"
-            onClick={form.handleSubmit}
-            title="Clique aqui para finalizar a compra"
-            disabled={isLoading}
+          <S.TabButton
+            isActive={payWithCard}
+            onClick={() => setPayWithCard(true)}
+            type="button"
+            title="Clique aqui para finalizar o pedido"
           >
-            {isLoading ? 'Finalizando compra...' : 'Finalizar compra'}
-          </Button>
+            <img src={creditCard} alt="Cartão de crédito" />
+            {isLoading ? 'Finalizando o pedido...' : 'Finalizar o pedido'}
+          </S.TabButton>
         </form>
       )}
     </div>
@@ -469,3 +470,13 @@ const Checkout = () => {
 }
 
 export default Checkout
+
+/*
+<Button
+            type="submit"
+            onClick={form.handleSubmit}
+            title="Clique aqui para finalizar o pedido"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Finalizando o pedido...' : 'Finalizar o pedido'}
+          </Button>*/

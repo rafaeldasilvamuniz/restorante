@@ -68,21 +68,12 @@ const Cart = () => {
               Total de {parseToBrl(getTotalQtd(items))}
               <span>Em até 4x sem juros</span>
             </S.Prices>
-            <Link to="/">
-              <Button
-                //onClick={goToCheckout}
-                title="Clique para ver o produto"
-                type="button"
-              >
-                Continuar a compra
-              </Button>
-            </Link>
             <Button
               onClick={goToCheckout}
               title="Clique para finalizar"
               type="button"
             >
-              Finalizar a compra
+              Finalizar o pedido
             </Button>
           </>
         ) : (
@@ -103,4 +94,14 @@ export default Cart
 <span>{parseToBrl(item.prices.current)}</span>
 Total de {parseToBrl(getTotalPrice(items))}{' '}
 <S.Quantity>{items.length} pizza(s) no carrinho</S.Quantity>
+
+<Link to="/">
+              <Button
+                //onClick={goToCheckout}
+                title="Clique para ver o produto"
+                type="button"
+              >
+                Continuar a compra
+              </Button>
+            </Link>
 */

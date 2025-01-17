@@ -5,7 +5,7 @@ import { cores } from '../../styles'
 
 export const ButtonContainer = styled.button`
   border: 2px solid ${cores.verde};
-  color: ${cores.cinza};
+  color: ${cores.branca};
   background-color: ${cores.verde};
   font-size: 16px;
   font-weight: bold;
@@ -20,7 +20,7 @@ export const ButtonContainer = styled.button`
 
 export const ButtonLink = styled(Link)`
   border: 2px solid ${cores.verde};
-  color: ${cores.cinza};
+  color: ${cores.branca};
   background-color: ${cores.verde};
   font-size: 16px;
   font-weight: bold;

@@ -4,16 +4,41 @@ import Massa from '../../models/Massa'
 import Button from '../../components/Button'
 import pizza from '../../assets/images/pizza.png'
 import { add, open } from '../../store/reducers/cart'
-import { useDispatch } from 'react-redux'
+//import { useDispatch } from 'react-redux'
 import React from 'react'
 import cart from '../../store/reducers/cart'
 import Product from '../Product'
+//import * as S from './styles'
+import { useEffect, useState } from 'react'
+import * as Yup from 'yup'
+import { useFormik } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
+import InputMask from 'react-input-mask'
+
+//import Button from '../../components/Button'
+import Card from '../../components/Card'
+
+import barCode from '../../assets/images/boleto.png'
+import creditCard from '../../assets/images/cartao.png'
+
+import { usePurchaseMutation } from '../../services/api'
+
+import * as S from './styles'
+import { RootReducer } from '../../store'
+import { clear } from '../../store/reducers/cart'
+
+import { getTotalPrice, parseToBrl } from '../../utils'
 
 type Props = {
   pasta: Pasta
 }
 
 const Home = ({ pasta }: Props) => {
+  const [payWithCard, setPayWithCard] = useState(false)
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  //const [installments, setInstallments] = useState<Installment[]>([])
   const dispatch = useDispatch()
 
   const addToCart = () => {
@@ -49,6 +74,26 @@ const Home = ({ pasta }: Props) => {
   }
 }*/
 
+  /*<S.TabButton
+            isActive={payWithCard}
+            onClick={() => setPayWithCard(true)}
+            type="button"
+            title="Clique aqui para finalizar o pedido"
+          >
+            <img src={creditCard} alt="Cartão de crédito" />
+            {isLoading ? 'Finalizando o pedido...' : 'Finalizar o pedido'}
+          </S.TabButton>
+
+          <Button
+          type="button"
+          title="Clique para adicionar a pizza"
+          //variant="primary"
+          onClick={addToCart}
+        >
+          Adicionar ao carrinho
+        </Button>
+*/
+
   const promocoes: Massa[] = [
     {
       id: 1,
@@ -58,14 +103,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['10%', 'R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     },
     {
@@ -76,14 +123,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['5%', 'R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     },
     {
@@ -94,14 +143,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['10%', 'R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     },
     {
@@ -112,14 +163,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['10%', 'R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     }
   ]
@@ -133,14 +186,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     },
     {
@@ -151,14 +206,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     },
     {
@@ -169,14 +226,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     },
     {
@@ -187,16 +246,16 @@ const Home = ({ pasta }: Props) => {
       infos: ['R$ 50,00'],
       image: pizza,
       button: (
-        <Button
+        <S.TabButton
+          isActive={payWithCard}
+          //onClick={() => setPayWithCard(true)}
           type="button"
           title="Clique para adicionar a pizza"
-          //variant="primary"
           onClick={addToCart}
-          //onClick={() => dispatch(add(Product))}
-          //const addToCart = ({ pasta }: Props) =>
         >
-          Adicionar ao carrinho
-        </Button>
+          <img src={creditCard} alt="Cartão de crédito" />
+          {isLoading ? 'Adicionando ao carrinho...' : 'Adicionar ao carrinho'}
+        </S.TabButton>
       )
     }
   ]
@@ -219,3 +278,16 @@ const Home = ({ pasta }: Props) => {
 )*/
 
 export default Home
+
+/*
+ button: (
+        <Button
+          type="button"
+          title="Clique para adicionar a pizza"
+          //variant="primary"
+          onClick={addToCart}
+        >
+          Adicionar ao carrinho
+        </Button>
+      )
+      */
