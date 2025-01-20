@@ -7,7 +7,7 @@ import Categories from './pages/Categories'
 //import Categories from './pages/Categories'
 import Product from './pages/Product'
 import Checkout from './pages/Checkout'
-//import Restaurantes from './pages/Restaurantes'
+import Restaurant from './pages/Restaurant'
 
 const Rotas = () => (
   <Routes>
@@ -73,6 +73,36 @@ const Rotas = () => (
     />
     <Route path="/product/:id" element={<Product />} />
     <Route path="/checkout" element={<Checkout />} />
+    <Route
+      path="/restaurant"
+      element={
+        <Restaurant
+          pasta={{
+            id: 0,
+            name: '',
+            description: '',
+            release_date: undefined,
+            prices: {
+              discount: undefined,
+              old: undefined,
+              current: undefined
+            },
+            details: {
+              category: '',
+              system: '',
+              developer: '',
+              publisher: '',
+              languages: []
+            },
+            media: {
+              thumbnail: '',
+              cover: '',
+              gallery: []
+            }
+          }}
+        />
+      }
+    />
   </Routes>
 )
 

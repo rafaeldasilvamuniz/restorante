@@ -42,6 +42,13 @@ export const Imagem = styled.div`
 
   img {
     position: absolute;
+    margin-left: 99%;
+  }
+`
+
+/*
+img {
+    position: absolute;
     margin-left: 96%;
   }
 
@@ -54,7 +61,7 @@ export const Imagem = styled.div`
       margin-top: 20%;
     }
   }
-`
+*/
 //margin-left: 90%;
 
 export const Links = styled.ul`

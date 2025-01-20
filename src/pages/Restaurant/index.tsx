@@ -15,7 +15,7 @@ type Props = {
   pasta: Pasta
 }
 
-const Restaurantes = ({ pasta }: Props) => {
+const Restaurant = ({ pasta }: Props) => {
   const dispatch = useDispatch()
 
   const addToCart = () => {
@@ -182,4 +182,4 @@ const Restaurantes = ({ pasta }: Props) => {
   </>
 )*/
 
-export default Restaurantes
+export default Restaurant

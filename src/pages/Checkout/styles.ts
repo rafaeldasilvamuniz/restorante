@@ -58,7 +58,7 @@ export const TabButton = styled.button<TabButtonProps>`
   font-size: 14px;
   font-weight: bold;
   color: ${cores.branca};
-  background-color: ${(props) => (props.isActive ? cores.verde : cores.preta)};
+  background-color: ${(props) => (props.isActive ? cores.verde : cores.salmao)};
   height: 32px;
   border: none;
   margin-right: 16px;

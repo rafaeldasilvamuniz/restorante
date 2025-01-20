@@ -47,6 +47,18 @@ export const FooterSection = styled.div`
 export const Imagem = styled.div`
   display: flex;
   justify-content: center;
+`
+export const ImgRedes = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    position: absolute;
+  }
+`
+
+/*display: flex;
+  justify-content: center;
 
   img {
     position: absolute;
@@ -61,10 +73,10 @@ export const Imagem = styled.div`
       margin-left: 40%;
       margin-top: 20%;
     }
-  }
-`
-export const ImgRedes = styled.div`
-  display: flex;
+  }*/
+
+/*
+ display: flex;
   justify-content: center;
 
   img {
@@ -81,7 +93,7 @@ export const ImgRedes = styled.div`
       margin-top: 20%;
     }
   }
-`
+*/
 export const Texto = styled.p`
   width: 480px;
   height: 24px;
@@ -100,7 +112,30 @@ export const Texto = styled.p`
 `
 
 export const Divtxt = styled.div`
+  width: 480px;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 11.72px;
+  text-align: center;
+  font-weight: bold;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  display: flex;
+  margin-left: 37%;
   color: ${cores.salmao};
+
+
+    @media (max-width: ${breakpoints.tablet}) {
+      grid-template-columns: 1fr;
+      margin-left: 0%;
+    }
+  }
+`
+
+/*
+color: ${cores.salmao};
   width: 480px;
   height: 24px;
   text-align: center;
@@ -112,7 +147,11 @@ export const Divtxt = styled.div`
     display: block;
     text-align: center;
   }
-`
+
+  @media screen and (max-width: ${breakpoints.celular}) {
+    grid-template-columns: 1fr;
+    margin-left: 0%;
+*/
 
 /*@media screen and (max-width: ${breakpoints.celular}) {
   grid-template-columns: 1fr 1fr;
